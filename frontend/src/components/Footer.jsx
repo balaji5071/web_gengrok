@@ -20,13 +20,13 @@ function Footer() {
             href="tel:+919346163673" 
             className="hover:text-white transition-colors"
           >
-            +91 93461 63673
+            +91 9346163673
           </a>
           {/* =============================== */}
         </div>
 
         <div className="border-t border-slate-700 pt-6 text-sm text-slate-400">
-          <p>&copy; 2025 StudentSites. All Rights Reserved.</p>
+          <p>&copy; 2025 Gengrok. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
