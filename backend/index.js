@@ -8,7 +8,10 @@ const app = express();
 const PORT = process.env.PORT ;
 const Offer = require('./Offer');
 // --- Middlewares ---
-app.use(cors()); // Allow cross-origin requests
+// Allow requests specifically from your frontend domain
+app.use(cors({
+    origin: 'https://www.gengrok.me'
+}));
 app.use(express.json()); // Allow server to accept JSON in the request body
 
 // --- MongoDB Connection ---
