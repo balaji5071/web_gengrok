@@ -49,8 +49,8 @@ function OfferManager() {
                         <input type="number" placeholder="Discount % (e.g., 20)" value={discount} onChange={e => setDiscount(e.target.value)} required min="1" max="99" className="w-full p-2 border rounded"/>
                         <select value={pkg} onChange={e => setPkg(e.target.value)} className="w-full p-2 border rounded">
                             <option value="Basic">Basic Package</option>
-                            <option value="Professional">Professional Package</option>
-                            <option value="Premium">Premium Package</option>
+                            <option value="Standard">Standard Package</option>
+                            <option value="Pro">Pro Package</option>
                         </select>
                         <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Create Offer</button>
                     </form>
