@@ -62,16 +62,20 @@ function Packages({ onChoosePlanClick }) {
     const [offers, setOffers] = useState([]);
 
     useEffect(() => {
+        console.log('Fetching active offers for packages...');
         fetch('https://web-gengrok.onrender.com/api/offers/active')
             .then(res => res.json())
-            .then(data => setOffers(data))
+            .then(data => {
+                console.log('Active offers received:', data);
+                setOffers(data);
+            })
             .catch(error => console.error("Failed to fetch offers:", error));
     }, []);
 
     const packageData = [
-        { title: 'Basic', price: '499', features: ['Single Page', 'Responsive Design', 'Basic Styling', '3 Day Delivery', 'Contact Form'], isPopular: false },
-        { title: 'Standard', price: '1,499', features: ['Multi-Page', 'Custom Design', 'SEO Optimized', '5 Day Delivery', 'Portfolio Gallery', 'Contact Form'], isPopular: true },
-        { title: 'Pro', price: '3,499', features: ['Advanced Features', 'Custom Animations', 'Blog Integration', '7 Day Delivery', 'Admin Panel', 'Priority Support'], isPopular: false },
+        { title: 'Basic', price: '499', features: ['Single Page', 'Responsive Design', 'Basic Styling', '3 Day Delivery', 'Contact Form'], isPopular: false, packageType: 'basic' },
+        { title: 'Standard', price: '1,499', features: ['Multi-Page', 'Custom Design', 'SEO Optimized', '5 Day Delivery', 'Portfolio Gallery', 'Contact Form'], isPopular: true, packageType: 'standard' },
+        { title: 'Pro', price: '3,499', features: ['Advanced Features', 'Custom Animations', 'Blog Integration', '7 Day Delivery', 'Admin Panel', 'Priority Support'], isPopular: false, packageType: 'pro' },
     ];
 
     return (
@@ -79,7 +83,9 @@ function Packages({ onChoosePlanClick }) {
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Choose Your Package</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {packageData.map((pkg, index) => {
-                    const relevantOffer = offers.find(o => o.applicablePackage === pkg.title);
+                    // Match using lowercase packageType instead of capitalized title
+                    const relevantOffer = offers.find(o => o.applicablePackage === pkg.packageType);
+                    console.log(`Package: ${pkg.title} (${pkg.packageType}) - Offer found:`, relevantOffer);
                     return (
                         <PackageCard
                             key={index}
