@@ -30,9 +30,17 @@ function AdminDashboard() {
 
     const fetchOrders = () => {
         setIsLoading(true);
+        console.log('Fetching orders from backend...');
         fetch('https://web-gengrok.onrender.com/api/orders/all')
-            .then(res => res.json())
+            .then(res => {
+                console.log('Response status:', res.status);
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(data => {
+                console.log('Received orders:', data);
                 // --- MODIFIED: Populate both master and filtered lists ---
                 setAllOrders(data);
                 setFilteredOrders(data);
@@ -40,6 +48,7 @@ function AdminDashboard() {
             })
             .catch(error => {
                 console.error("Failed to fetch orders:", error);
+                alert('Failed to fetch orders: ' + error.message);
                 setIsLoading(false);
             });
     };

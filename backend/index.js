@@ -10,7 +10,10 @@ const Offer = require('./Offer');
 // --- Middlewares ---
 // Allow requests specifically from your frontend domain
 app.use(cors({
-    origin: 'https://www.gengrok.me'
+    origin: ['https://www.gengrok.me', 'https://gengrok.me'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json()); // Allow server to accept JSON in the request body
 
@@ -76,9 +79,11 @@ app.patch('/api/orders/:id/status', async (req, res) => {
 });
 app.get('/api/orders/all', async (req, res) => {
     try {
+        console.log('Fetching all orders...');
         // Query the database to find all documents in the Order collection
         // .sort({ orderDate: -1 }) will show the newest orders first
         const orders = await Order.find({}).sort({ orderDate: -1 });
+        console.log(`Found ${orders.length} orders`);
 
         // Send the array of orders back as a JSON response
         res.status(200).json(orders);
