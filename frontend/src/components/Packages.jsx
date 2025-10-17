@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 // A reusable component for each individual pricing card
 const PackageCard = ({ title, price, features, isPopular, offer, onChoosePlanClick }) => {
-    const cardClasses = `bg-white p-8 rounded-xl shadow-md border flex flex-col items-center transition-transform duration-300 ${isPopular ? 'border-blue-500 transform scale-105' : 'border-slate-200'}`;
-    const buttonClasses = `mt-auto font-semibold py-2 px-6 rounded-lg w-full ${isPopular ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'}`;
+    // --- CHANGED: Added hover effects and tweaked transition for the whole card ---
+    const cardClasses = `bg-white p-8 rounded-xl shadow-md border flex flex-col items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${isPopular ? 'border-blue-500 transform scale-105' : 'border-slate-200'}`;
+    const buttonClasses = `mt-auto font-semibold py-2 px-6 rounded-lg w-full transition-all duration-300 transform hover:scale-105 ${isPopular ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'}`;
 
     let discountedPrice = null;
     if (offer) {
@@ -69,8 +70,8 @@ function Packages({ onChoosePlanClick }) {
 
     const packageData = [
         { title: 'Basic', price: '499', features: ['Single Page', 'Responsive Design', 'Basic Styling', '3 Day Delivery', 'Contact Form'], isPopular: false },
-        { title: 'Professional', price: '1,499', features: ['Multi-Page', 'Custom Design', 'SEO Optimized', '5 Day Delivery', 'Portfolio Gallery', 'Contact Form'], isPopular: true },
-        { title: 'Premium', price: '3,499', features: ['Advanced Features', 'Custom Animations', 'Blog Integration', '7 Day Delivery', 'Admin Panel', 'Priority Support'], isPopular: false },
+        { title: 'Standard', price: '1,499', features: ['Multi-Page', 'Custom Design', 'SEO Optimized', '5 Day Delivery', 'Portfolio Gallery', 'Contact Form'], isPopular: true },
+        { title: 'Pro', price: '3,499', features: ['Advanced Features', 'Custom Animations', 'Blog Integration', '7 Day Delivery', 'Admin Panel', 'Priority Support'], isPopular: false },
     ];
 
     return (

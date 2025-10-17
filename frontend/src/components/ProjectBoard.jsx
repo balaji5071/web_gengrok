@@ -3,21 +3,17 @@ import React, { useState, useEffect } from 'react';
 // A small component for displaying a single project
 // 1. We update it to accept a 'status' prop
 const ProjectItem = ({ name, type, status }) => {
-    
-    // 2. We set the badge text and color based on the status
     const isCompleted = status === 'Completed';
     const badgeText = isCompleted ? 'Completed' : 'In Progress';
-    const badgeColor = isCompleted 
-        ? 'bg-purple-100 text-purple-800' 
-        : 'bg-blue-100 text-blue-800';
+    const badgeColor = isCompleted ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800';
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex justify-between items-center">
+        // --- CHANGED: Added hover effects and transition to the wrapper div ---
+        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex justify-between items-center transition-all duration-300 hover:shadow-md hover:bg-slate-50 hover:-translate-y-1">
             <div>
                 <p className="font-semibold text-slate-800">{name}</p>
                 <p className="text-sm text-slate-500">{type}</p>
             </div>
-            {/* 3. We use the dynamic text and color here */}
             <span className={`text-xs font-medium py-1 px-2 rounded-full ${badgeColor}`}>
                 {badgeText}
             </span>

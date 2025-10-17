@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Change #1: Accept the onOrderClick prop here
 function Hero({ onOrderClick }) {
   return (
     <div className="text-center py-24 sm:py-32">
@@ -14,13 +13,12 @@ function Hero({ onOrderClick }) {
         Stand out from the crowd with a stunning, custom-built website. Perfect for portfolios, resumes, and projects.
       </p>
       <div className="mt-8 flex justify-center">
-        {/* Change #2: Add the onClick handler here */}
         <button 
           onClick={onOrderClick}
-          className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300"
+          className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300" // <-- CHANGED
         >
           Order Your Website
-          <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </button>
       </div>
     </div>
