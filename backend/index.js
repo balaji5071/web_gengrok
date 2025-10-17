@@ -20,17 +20,19 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', (req, res) => {
     res.send('StudentSites API is running!');
 });
-
 // --- Order placement route ---
 app.post('/api/orders', async (req, res) => {
     try {
-        const { name, email, phone, websiteType, preferences } = req.body;
+        // Add `referral` to the destructuring
+        const { name, email, phone, websiteType, package, referral, preferences } = req.body;
 
         const newOrder = new Order({
             name,
             email,
             phone,
             websiteType,
+            package,
+            referral, // <-- ADD `referral` here
             preferences
         });
 
