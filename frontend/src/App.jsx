@@ -21,10 +21,10 @@ const HomePage = () => {
             <main className="container mx-auto px-4 flex-grow">
                 <Hero onOrderClick={handleScrollToForm} />
                 <Packages onChoosePlanClick={handleScrollToForm} />
-                <ProjectBoard />
                 <div ref={formRef}>
                     <OrderForm />
                 </div>
+                <ProjectBoard />
             </main>
             <Footer />
         </>
