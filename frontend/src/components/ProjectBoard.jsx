@@ -33,7 +33,7 @@ function ProjectBoard() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/projects')
+        fetch('https://web-gengrok.onrender.com/api/projects')
             .then(res => res.json())
             .then(data => {
                 setCurrentProjects(data.filter(p => p.status === 'Accepted'));

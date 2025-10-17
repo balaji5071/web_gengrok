@@ -61,7 +61,7 @@ function Packages({ onChoosePlanClick }) {
     const [offers, setOffers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/offers/active')
+        fetch('https://web-gengrok.onrender.com/api/offers/active')
             .then(res => res.json())
             .then(data => setOffers(data))
             .catch(error => console.error("Failed to fetch offers:", error));

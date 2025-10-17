@@ -7,7 +7,7 @@ function OfferManager() {
     const [pkg, setPkg] = useState('Professional');
 
     const fetchOffers = () => {
-        fetch('http://localhost:5000/api/offers')
+        fetch('https://web-gengrok.onrender.com/api/offers')
             .then(res => res.json())
             .then(data => setOffers(data));
     };
@@ -18,7 +18,7 @@ function OfferManager() {
         e.preventDefault();
         const newOffer = { title, discountPercentage: Number(discount), applicablePackage: pkg };
 
-        fetch('http://localhost:5000/api/offers', {
+        fetch('https://web-gengrok.onrender.com/api/offers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newOffer),
@@ -32,7 +32,7 @@ function OfferManager() {
     
     const handleDelete = (offerId) => {
         if (window.confirm('Are you sure you want to delete this offer?')) {
-            fetch(`http://localhost:5000/api/offers/${offerId}`, { method: 'DELETE' })
+            fetch(`https://web-gengrok.onrender.com/api/offers/${offerId}`, { method: 'DELETE' })
                 .then(fetchOffers);
         }
     };

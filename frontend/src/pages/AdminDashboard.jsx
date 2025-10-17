@@ -30,7 +30,7 @@ function AdminDashboard() {
 
     const fetchOrders = () => {
         setIsLoading(true);
-        fetch('http://localhost:5000/api/orders/all')
+        fetch('https://web-gengrok.onrender.com/api/orders/all')
             .then(res => res.json())
             .then(data => {
                 // --- MODIFIED: Populate both master and filtered lists ---
@@ -83,8 +83,8 @@ function AdminDashboard() {
             order._id === orderId ? { ...order, status: newStatus } : order
         );
         setAllOrders(updatedAllOrders); // This triggers the filter useEffect automatically
-        
-        fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+
+        fetch(`https://web-gengrok.onrender.com/api/orders/${orderId}/status`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: newStatus }),
