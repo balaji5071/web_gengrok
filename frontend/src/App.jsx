@@ -37,7 +37,7 @@ function App() {
     <div className="bg-slate-50 min-h-screen flex flex-col">
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/genadmingrok" element={<AdminDashboard />} />
         </Routes>
     </div>
   );
